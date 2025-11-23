@@ -84,12 +84,12 @@ def time_index(df):
 # ---------------------------------------------------------
 
 st.set_page_config(
-    page_title="Car Price Predictor",
-    page_icon="🚗",
+    page_title="auto_model",
+    # page_icon="",
     layout="wide"
 )
 
-st.title("🚗 Car Price Prediction System")
+st.title("car_model")
 st.markdown("---")
 
 
@@ -114,7 +114,7 @@ OWNERS_COUNT = ["1", "2", "3", "4"]
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("📋 Basic Information")
+    # st.subheader("info")
 
     car_name = st.selectbox("Car Name", CAR_NAMES)
     state = st.selectbox("Region/State", REGIONS)
@@ -167,7 +167,7 @@ with col1:
     )
 
 with col2:
-    st.subheader("🔧 Features & Details")
+    # st.subheader("info")
 
     fuel_type = st.selectbox("Fuel Type", FUEL_TYPES)
     item_type = st.selectbox("Item Type", ITEM_TYPES)
@@ -176,7 +176,7 @@ with col2:
     car_condition = st.selectbox("Car Condition", CAR_CONDITIONS)
     color = st.selectbox("Color", COLORS)
 
-    st.markdown("#### Additional Features")
+    # st.markdown("#### Additional Features")
 
     col2a, col2b = st.columns(2)
 
@@ -198,7 +198,7 @@ st.markdown("---")
 #  PREDICTION
 # ---------------------------------------------------------
 
-if st.button("🔮 Predict Price", type="primary", use_container_width=True):
+if st.button("predict price", type="primary", use_container_width=True):
 
     if model is None:
         st.error("Model not loaded!")
@@ -264,13 +264,13 @@ if st.button("🔮 Predict Price", type="primary", use_container_width=True):
             col_r1, col_r2, col_r3 = st.columns(3)
 
             with col_r1:
-                st.metric("Predicted Price", f"${prediction:,.2f}")
+                st.metric("prediction", f"{prediction:,.2f}")
 
             with col_r2:
-                st.metric("Price Range (±10%)", f"${prediction*0.9:,.2f} - ${prediction*1.1:,.2f}")
+                st.metric("10% price range", f"{prediction*0.9:,.2f} - {prediction*1.1:,.2f}")
 
-            with col_r3:
-                st.metric("Car Age", f"{datetime.now().year - release_year} years")
+            # with col_r3:
+            #     st.metric("", f"{datetime.now().year - release_year} years")
 
         except Exception as e:
             st.error(f"Error: {e}")
@@ -280,17 +280,17 @@ if st.button("🔮 Predict Price", type="primary", use_container_width=True):
 #  SIDEBAR
 # ---------------------------------------------------------
 
-with st.sidebar:
-    st.header("ℹ️ Instructions")
-    st.markdown("""
-    **How to use this app:**
-    1. Fill all details
-    2. Click **Predict Price**
-    3. See predicted value & range
+# with st.sidebar:
+#     st.header("ℹ️ Instructions")
+#     st.markdown("""
+#     **How to use this app:**
+#     1. Fill all details
+#     2. Click **Predict Price**
+#     3. See predicted value & range
     
-    **Required Files:**
-    - target_encoder.pkl
-    - model.pkl
-    - Car_State_name.csv
-    """)
+#     **Required Files:**
+#     - target_encoder.pkl
+#     - model.pkl
+#     - Car_State_name.csv
+#     """)
 
