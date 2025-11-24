@@ -116,14 +116,14 @@ col1, col2 = st.columns(2)
 with col1:
     # st.subheader("info")
 
-    car_name = st.selectbox("Car Name", CAR_NAMES)
+    car_name = st.selectbox("Car Name", CAR_NAMES, index=CAR_NAMES.index("Cobalt"))
     state = st.selectbox("Region/State", REGIONS)
 
     release_year = st.number_input(
         "Release Year",
         min_value=1990,
         max_value=datetime.now().year,
-        value=2015,
+        value=2020,
         step=1
     )
     # current_yaer = st.number_input(
@@ -138,6 +138,7 @@ with col1:
     transmission = st.radio(
         "Transmission",
         options=[0, 1],
+        index=0,
         format_func=lambda x: "Automatic" if x == 0 else "Manual",
         horizontal=True
     )
@@ -146,7 +147,7 @@ with col1:
         "Mileage (km)",
         min_value=0.0,
         max_value=500000.0,
-        value=50000.0,
+        value=80000.0,
         step=1000.0
     )
 
@@ -171,10 +172,10 @@ with col2:
 
     fuel_type = st.selectbox("Fuel Type", FUEL_TYPES)
     item_type = st.selectbox("Item Type", ITEM_TYPES)
-    body_type = st.selectbox("Body Type", BODY_TYPES)
+    body_type = st.selectbox("Body Type", BODY_TYPES, index=BODY_TYPES.index("Sedan"))
     owners_count = st.selectbox("Number of Previous Owners", OWNERS_COUNT)
     car_condition = st.selectbox("Car Condition", CAR_CONDITIONS)
-    color = st.selectbox("Color", COLORS)
+    color = st.selectbox("Color", COLORS, index=COLORS.index("White"))
 
     # st.markdown("#### Additional Features")
 
